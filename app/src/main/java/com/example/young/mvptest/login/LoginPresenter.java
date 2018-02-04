@@ -1,5 +1,7 @@
 package com.example.young.mvptest.login;
 
+import com.example.young.mvptest.common.ResponseListener;
+
 /**
  * Created by YOUNG on 2018/2/4.
  */
@@ -22,7 +24,7 @@ public class LoginPresenter implements LoginPresenterContract {
         loginView.start();
         //网络请求，此处省略，onResponseListener为请求回调
 
-        OnResponseListener onResponseListener = new OnResponseListener() {
+        ResponseListener<LoginResult> onResponseListener = new ResponseListener<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 if (loginResult.success) {
@@ -47,11 +49,5 @@ public class LoginPresenter implements LoginPresenterContract {
 
     }
 
-    interface OnResponseListener {
-        void onSuccess(LoginResult loginResult);
 
-        void onError(RuntimeException e);
-
-        void onComplete();
-    }
 }

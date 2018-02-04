@@ -5,5 +5,5 @@ package com.example.young.mvptest.base;
  */
 
 public class BaseResult {
-    boolean success;
+    public boolean success;
 }

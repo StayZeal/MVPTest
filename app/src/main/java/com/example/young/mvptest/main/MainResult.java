@@ -12,5 +12,7 @@ public class MainResult extends BaseResult {
     List<Item> items;
 
     static class Item {
+
+        public String title;
     }
 }
