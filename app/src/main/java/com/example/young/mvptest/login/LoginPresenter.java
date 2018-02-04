@@ -1,12 +1,10 @@
-package com.example.young.mvptest;
-
-import android.util.Log;
+package com.example.young.mvptest.login;
 
 /**
  * Created by YOUNG on 2018/2/4.
  */
 
-public class LoginPresenter {
+public class LoginPresenter implements LoginPresenterContract {
 
     private static final String TAG = "LoginPresenter";
 

@@ -1,10 +1,13 @@
-package com.example.young.mvptest;
+package com.example.young.mvptest.login;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.young.mvptest.main.MainActivity;
+import com.example.young.mvptest.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +22,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     EditText passwordEt;
     @BindView(R.id.login_btn)
     Button loginBtn;
-    private LoginPresenter loginPresenter;
+    private LoginPresenterContract loginPresenter;
 
 
     @Override
