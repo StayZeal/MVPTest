@@ -1,11 +1,14 @@
 package com.example.young.mvptest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.widget.EditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -14,6 +17,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText nameEt;
     @BindView(R.id.password_et)
     EditText passwordEt;
+    @BindView(R.id.login_btn)
+    Button loginBtn;
     private LoginPresenter loginPresenter;
 
 
@@ -25,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
 
         loginPresenter = new LoginPresenter();
 
-        login();
 
     }
 
@@ -37,8 +41,10 @@ public class LoginActivity extends AppCompatActivity {
         loginPresenter.login(userName, password, new LoginPresenter.OnResponseListener() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                //处理请求结果
-                //跳转到MainActivity
+
+
+                success();
+
             }
 
             @Override
@@ -51,5 +57,20 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void success() {
+        /**
+         * 1.保存登陆信息（省略）
+         * 2.跳转到MainActivity
+         */
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.login_btn)
+    public void onViewClicked() {
+
+        login();
     }
 }

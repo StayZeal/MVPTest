@@ -15,6 +15,8 @@ public class LoginPresenter {
 
         Log.i(TAG, "网络请求登陆");
 
+        onResponseListener.onSuccess(new LoginResult());
+
     }
 
     interface OnResponseListener {
