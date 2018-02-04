@@ -10,7 +10,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginView {
 
 
     @BindView(R.id.name_et)
@@ -37,8 +37,10 @@ public class LoginActivity extends AppCompatActivity {
         String userName = nameEt.getText().toString();
         String password = passwordEt.getText().toString();
 
+        loginPresenter.login(userName, password, this);
 
-        loginPresenter.login(userName, password, new LoginPresenter.OnResponseListener() {
+
+/*        loginPresenter.login(userName, password, new LoginPresenter.OnResponseListener() {
             @Override
             public void onSuccess(LoginResult loginResult) {
 
@@ -56,16 +58,33 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete() {
 
             }
-        });
+        });*/
     }
 
-    private void success() {
+    @Override
+    public void start() {
+        //加载进度条
+    }
+
+    @Override
+    public void success() {
         /**
          * 1.保存登陆信息（省略）
          * 2.跳转到MainActivity
          */
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void fail() {
+
+        //失败处理
+    }
+
+    @Override
+    public void error() {
+        //错误处理
     }
 
     @OnClick(R.id.login_btn)

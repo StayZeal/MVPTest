@@ -5,4 +5,6 @@ package com.example.young.mvptest;
  */
 
 public class LoginResult {
+
+    public boolean success;
 }
