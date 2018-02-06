@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mainPresenter = new MainPresenter(mainView);
-        mainPresenter.getList(this);
+        mainPresenter = new MainPresenter(this);
+        mainPresenter.getList();
 
         contentRv.setLayoutManager(new LinearLayoutManager(this));
         articleAdapter = new ArticleAdapter();
@@ -76,6 +76,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
             final MainResult.Item item = (MainResult.Item) datas.get(position);
+
+            VHolder vHolder = (VHolder) holder;
+            vHolder.text1.setText(item.title);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
